@@ -1,7 +1,5 @@
 # ☀️ Solar Power Generation Prediction
 
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=mrpk7431-dev&repo=Solar-Power-Generation-Prediction-using-Machine-Learning&theme=radical)](https://github.com/mrpk7431-dev/Solar-Power-Generation-Prediction-using-Machine-Learning)
-
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![Flask](https://img.shields.io/badge/Flask-Framework-green.svg)
 ![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Scikit--Learn-orange.svg)
