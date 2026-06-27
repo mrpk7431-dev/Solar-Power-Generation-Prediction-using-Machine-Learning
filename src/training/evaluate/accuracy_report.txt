@@ -1,0 +1,30 @@
+==================================================
+        SOLAR GENERATION MODEL ACCURACY REPORT     
+==================================================
+
+--- Plant 1 Accuracy Metrics ---
+R² Accuracy (Explained Variance): 98.88%
+MAPE-Based Accuracy (Daylight AC > 10kW): 91.12% (Error rate: 8.88%)
+Percentage of predictions within ±10 kW: 37.27%
+Percentage of predictions within ±20 kW: 70.67%
+Percentage of predictions within ±50 kW: 86.56%
+Percentage of predictions within ±100 kW: 97.25%
+
+
+--- Plant 2 Accuracy Metrics ---
+R² Accuracy (Explained Variance): 92.55%
+MAPE-Based Accuracy (Daylight AC > 10kW): 74.70% (Error rate: 25.30%)
+Percentage of predictions within ±10 kW: 60.78%
+Percentage of predictions within ±20 kW: 69.80%
+Percentage of predictions within ±50 kW: 85.24%
+Percentage of predictions within ±100 kW: 94.48%
+
+
+--- Combined Accuracy Metrics ---
+R² Accuracy (Explained Variance): 96.54%
+MAPE-Based Accuracy (Daylight AC > 10kW): 83.06% (Error rate: 16.94%)
+Percentage of predictions within ±10 kW: 48.85%
+Percentage of predictions within ±20 kW: 70.24%
+Percentage of predictions within ±50 kW: 85.91%
+Percentage of predictions within ±100 kW: 95.89%
+

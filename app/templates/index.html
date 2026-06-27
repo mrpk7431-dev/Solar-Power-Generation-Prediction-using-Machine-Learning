@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-powered Solar Power Generation Prediction Dashboard — simulate and predict solar energy yield using Machine Learning.">
+    <title>☀️ Solar Power Generation Prediction</title>
+    <!-- Google Fonts: Inter + Poppins + JetBrains Mono (Premium Modern Fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Water River Wave Background Layers -->
+    <div class="water-wave2"></div>
+    <div class="water-wave3"></div>
+    <div class="water-shimmer"></div>
+
+    <!-- ========= AI PAGE LOAD OVERLAY ========= -->
+    <div id="ai-loader" class="ai-loader-overlay">
+        <div class="ai-loader-inner">
+
+            <!-- Neural network SVG background nodes -->
+            <svg class="ai-nodes-svg" viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+                <!-- Lines -->
+                <line x1="80" y1="80"  x2="200" y2="150" stroke="rgba(0,200,83,0.25)" stroke-width="1"/>
+                <line x1="200" y1="150" x2="320" y2="90"  stroke="rgba(0,200,83,0.25)" stroke-width="1"/>
+                <line x1="320" y1="90"  x2="420" y2="160" stroke="rgba(0,200,83,0.25)" stroke-width="1"/>
+                <line x1="80" y1="220" x2="200" y2="150" stroke="rgba(0,212,255,0.2)"  stroke-width="1"/>
+                <line x1="200" y1="150" x2="320" y2="210" stroke="rgba(0,212,255,0.2)"  stroke-width="1"/>
+                <line x1="320" y1="210" x2="420" y2="160" stroke="rgba(0,212,255,0.2)"  stroke-width="1"/>
+                <line x1="130" y1="150" x2="200" y2="150" stroke="rgba(255,215,0,0.2)"  stroke-width="1"/>
+                <line x1="320" y1="90"  x2="320" y2="210" stroke="rgba(255,215,0,0.15)" stroke-width="1"/>
+                <!-- Nodes -->
+                <circle cx="80"  cy="80"  r="5" fill="#00C853" opacity="0.8" class="ai-node"/>
+                <circle cx="80"  cy="220" r="5" fill="#00D4FF" opacity="0.8" class="ai-node"/>
+                <circle cx="130" cy="150" r="4" fill="#00C853" opacity="0.6" class="ai-node"/>
+                <circle cx="200" cy="150" r="8" fill="#FFD700" opacity="0.9" class="ai-node-pulse"/>
+                <circle cx="320" cy="90"  r="5" fill="#00C853" opacity="0.8" class="ai-node"/>
+                <circle cx="320" cy="210" r="5" fill="#00D4FF" opacity="0.8" class="ai-node"/>
+                <circle cx="420" cy="160" r="7" fill="#00C853" opacity="0.9" class="ai-node-pulse"/>
+                <circle cx="260" cy="55"  r="3" fill="#00D4FF" opacity="0.5" class="ai-node"/>
+                <circle cx="260" cy="255" r="3" fill="#FFD700" opacity="0.5" class="ai-node"/>
+            </svg>
+
+            <!-- Central AI icon -->
+            <div class="ai-loader-icon">
+                <div class="ai-ring ai-ring-1"></div>
+                <div class="ai-ring ai-ring-2"></div>
+                <div class="ai-ring ai-ring-3"></div>
+                <i class="fa-solid fa-solar-panel ai-center-icon"></i>
+            </div>
+
+            <!-- Text block -->
+            <div class="ai-loader-text">
+                <h2 class="ai-loader-title">Solar AI System</h2>
+                <p class="ai-loader-sub" id="ai-loader-status">Initializing AI Model...</p>
+            </div>
+
+            <!-- Progress bar -->
+            <div class="ai-progress-track">
+                <div class="ai-progress-bar" id="ai-progress-bar"></div>
+            </div>
+            <p class="ai-progress-pct" id="ai-progress-pct">0%</p>
+
+        </div>
+    </div>
+    <!-- ========= END OVERLAY ========= -->
+
+    <div class="dashboard-wrapper">
+        <!-- Top Status Header -->
+        <header class="dashboard-header">
+            <div class="header-brand">
+                <div class="brand-icon-wrap">
+                    <i class="fa-solid fa-sun brand-sun-icon"></i>
+                    <span class="brand-sun-ring"></span>
+                </div>
+                <div class="brand-text-block">
+                    <h1 class="brand-title">
+                        <span class="brand-word-solar">Solar</span>
+                        <span class="brand-word-power">Power</span>
+                        <span class="brand-word-gen">Generation</span>
+                        <span class="brand-word-pred">Prediction</span>
+                    </h1>
+                    <p class="subtitle"><i class="fa-solid fa-microchip"></i> AI-Powered ML Prediction Engine</p>
+                </div>
+            </div>
+            <div class="header-meta">
+                <div class="meta-item">
+                    <span class="meta-label">System Status</span>
+                    <span class="meta-value status-live"><span class="live-dot"></span> ML Model Active</span>
+                </div>
+                <div class="meta-item hide-mobile">
+                    <span class="meta-label">Model Accuracy</span>
+                    <span class="meta-value text-gold">R² 0.965</span>
+                </div>
+                <div class="meta-item hide-mobile">
+                    <span class="meta-label">Prediction Mode</span>
+                    <span class="meta-value">Interval Yield</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <div class="dashboard-grid">
+
+            <!-- ==================== INPUT VIEW ==================== -->
+            <section id="input-view" class="panel view-panel active">
+                <div class="panel-header">
+                    <div class="panel-header-left">
+                        <div class="panel-icon"><i class="fa-solid fa-sliders"></i></div>
+                        <div>
+                            <h2>Sensor Range Parameters</h2>
+                            <p>Configure starting & ending environmental states for simulation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="prediction-form" class="prediction-form">
+                    <div class="inputs-grid">
+                        <!-- Solar Irradiation -->
+                        <div class="input-card-group" data-color="gold">
+                            <span class="group-label"><i class="fa-solid fa-solar-panel"></i> Solar Irradiation (W/m²)</span>
+                            <div class="slider-wrapper">
+                                <div class="slider-header">
+                                    <span class="slider-label">Starting</span>
+                                    <span id="irradiation_start-val" class="slider-val">0.00</span>
+                                </div>
+                                <input type="range" id="irradiation_start" name="irradiation_start" min="0" max="1.5" step="0.01" value="0.0" class="range-slider">
+                            </div>
+                            <div class="slider-wrapper">
+                                <div class="slider-header">
+                                    <span class="slider-label">Ending</span>
+                                    <span id="irradiation_end-val" class="slider-val">0.80</span>
+                                </div>
+                                <input type="range" id="irradiation_end" name="irradiation_end" min="0" max="1.5" step="0.01" value="0.8" class="range-slider">
+                            </div>
+                        </div>
+
+                        <!-- Ambient Temperature -->
+                        <div class="input-card-group" data-color="cyan">
+                            <span class="group-label"><i class="fa-solid fa-temperature-half"></i> Ambient Temperature (°C)</span>
+                            <div class="slider-wrapper">
+                                <div class="slider-header">
+                                    <span class="slider-label">Starting</span>
+                                    <span id="temperature_start-val" class="slider-val">20</span>
+                                </div>
+                                <input type="range" id="temperature_start" name="temperature_start" min="20" max="50" step="1" value="20" class="range-slider">
+                            </div>
+                            <div class="slider-wrapper">
+                                <div class="slider-header">
+                                    <span class="slider-label">Ending</span>
+                                    <span id="temperature_end-val" class="slider-val">30</span>
+                                </div>
+                                <input type="range" id="temperature_end" name="temperature_end" min="20" max="50" step="1" value="30" class="range-slider">
+                            </div>
+                        </div>
+
+                        <!-- Relative Humidity -->
+                        <div class="input-card-group" data-color="purple">
+                            <span class="group-label"><i class="fa-solid fa-droplet"></i> Relative Humidity (%)</span>
+                            <div class="slider-wrapper">
+                                <div class="slider-header">
+                                    <span class="slider-label">Starting</span>
+                                    <span id="humidity_start-val" class="slider-val">0</span>
+                                </div>
+                                <input type="range" id="humidity_start" name="humidity_start" min="0" max="100" step="1" value="0" class="range-slider">
+                            </div>
+                            <div class="slider-wrapper">
+                                <div class="slider-header">
+                                    <span class="slider-label">Ending</span>
+                                    <span id="humidity_end-val" class="slider-val">60</span>
+                                </div>
+                                <input type="range" id="humidity_end" name="humidity_end" min="0" max="100" step="1" value="60" class="range-slider">
+                            </div>
+                        </div>
+
+                        <!-- Time Horizon -->
+                        <div class="input-card-group" data-color="emerald">
+                            <span class="group-label"><i class="fa-solid fa-clock"></i> Simulation Time Horizon</span>
+                            <div class="time-inputs-container">
+                                <div class="time-field">
+                                    <label for="hour_start" class="time-lbl">Start Hour (0–23)</label>
+                                    <input type="number" id="hour_start" name="hour_start" min="0" max="23" placeholder="e.g. 9" value="9" required class="number-input">
+                                </div>
+                                <div class="time-divider">
+                                    <i class="fa-solid fa-arrow-right-long"></i>
+                                </div>
+                                <div class="time-field">
+                                    <label for="hour_end" class="time-lbl">End Hour (0–23)</label>
+                                    <input type="number" id="hour_end" name="hour_end" min="0" max="23" placeholder="e.g. 17" value="17" required class="number-input">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Controls -->
+                    <div class="form-controls">
+                        <button type="button" id="reset-btn" class="btn btn-secondary">
+                            <i class="fa-solid fa-rotate-left"></i> Reset
+                        </button>
+                        <button type="submit" id="predict-btn" class="btn btn-primary">
+                            <span class="btn-text"><i class="fa-solid fa-brain"></i> Run AI Prediction</span>
+                            <div class="spinner hidden"></div>
+                        </button>
+                    </div>
+                </form>
+
+            </section>
+
+            <!-- ==================== OUTPUT VIEW ==================== -->
+            <section id="output-view" class="panel view-panel">
+                <!-- Placeholder State -->
+                <div id="results-placeholder" class="results-placeholder">
+                    <div class="placeholder-icon">
+                        <i class="fa-solid fa-gauge-high"></i>
+                    </div>
+                    <h3>Awaiting Prediction</h3>
+                    <p>Configure sensor parameters and run the AI model to visualize energy generation insights.</p>
+                </div>
+
+                <!-- Active Results -->
+                <div id="results-content" class="results-content hidden">
+                    <!-- Results Header with Back Button -->
+                    <div class="results-header-flex">
+                        <div class="panel-header-left">
+                            <div class="panel-icon panel-icon-emerald"><i class="fa-solid fa-chart-pie"></i></div>
+                            <div>
+                                <h2>AI Prediction Report</h2>
+                                <p>Real-time aggregated power generation analysis</p>
+                            </div>
+                        </div>
+                        <button type="button" id="back-btn" class="btn btn-back">
+                            <i class="fa-solid fa-arrow-left"></i> Edit Parameters
+                        </button>
+                    </div>
+
+                    <!-- Hero Energy Card -->
+                    <div class="hero-energy-card">
+                        <div class="hero-energy-left">
+                            <span class="hero-label">Total Energy Yield</span>
+                            <div class="hero-value-row">
+                                <i class="fa-solid fa-bolt hero-bolt"></i>
+                                <span id="total-energy-value" class="hero-number">0</span>
+                                <span class="hero-unit">kWh</span>
+                            </div>
+                            <span class="hero-sub">Accumulated interval generation from AI simulation</span>
+                        </div>
+                        <div class="hero-energy-right">
+                            <div class="hero-stat">
+                                <span class="hero-stat-label">Power Range</span>
+                                <span class="hero-stat-value"><span id="power-value-start">0</span> → <span id="power-value-end" class="text-gold">0</span> kW</span>
+                            </div>
+                            <div class="hero-stat">
+                                <span class="hero-stat-label">Houses Powered</span>
+                                <span class="hero-stat-value"><span id="homes-value-start">0</span> → <span id="homes-value-end" class="text-emerald">0</span> Homes</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- Plant Specifications -->
+                    <div class="plant-specs-card">
+                        <div class="specs-header">
+                            <i class="fa-solid fa-solar-panel"></i>
+                            <h3>About This Solar Plant</h3>
+                        </div>
+
+                        <!-- Simple Plant Description -->
+                        <div class="plant-intro-box">
+                            <p class="plant-intro-text">
+                                🌞 <strong>Plant Type: Solar Photovoltaic (Solar PV) Power Plant</strong><br>
+                                This plant uses <strong>sunlight</strong> to generate electricity using solar panels — no fuel, no smoke, 100% clean energy.
+                                <br><br>
+                                ⚡ <strong>Plant Capacity: 1,400 kW (1.4 MW)</strong><br>
+                                This plant can produce up to <strong>1,400 kilowatts</strong> of electricity at its peak.
+                                That is enough to power approximately <strong>1,400 average homes</strong> at the same time!
+                                <br><br>
+                                🤖 The <strong>AI model</strong> in this app predicts how many <strong>kilowatts (kW)</strong> this plant will generate
+                                based on the <strong>sunlight level, temperature, humidity, and time of day</strong> that you set.
+                            </p>
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

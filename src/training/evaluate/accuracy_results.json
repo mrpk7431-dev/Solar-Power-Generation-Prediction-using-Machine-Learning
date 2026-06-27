@@ -1,0 +1,20 @@
+{
+    "Plant_1": {
+        "MAE": 23.3862,
+        "Max_Capacity_kW": 1410.95,
+        "Capacity_Accuracy_Percent": 98.34,
+        "Volume_Accuracy_Percent": 91.46
+    },
+    "Plant_2": {
+        "MAE": 27.1479,
+        "Max_Capacity_kW": 1328.2133,
+        "Capacity_Accuracy_Percent": 97.96,
+        "Volume_Accuracy_Percent": 86.74
+    },
+    "Combined": {
+        "MAE": 25.2394,
+        "Max_Capacity_kW": 1410.95,
+        "Capacity_Accuracy_Percent": 98.21,
+        "Volume_Accuracy_Percent": 89.47
+    }
+}

@@ -1,0 +1,98 @@
+--- Plant 1 Generation ---
+Shape (Rows, Columns): (68778, 7)
+
+Missing Values:
+DATE_TIME      0
+PLANT_ID       0
+SOURCE_KEY     0
+DC_POWER       0
+AC_POWER       0
+DAILY_YIELD    0
+TOTAL_YIELD    0
+
+Statistical Description:
+        PLANT_ID      DC_POWER      AC_POWER   DAILY_YIELD   TOTAL_YIELD
+count    68778.0  68778.000000  68778.000000  68778.000000  6.877800e+04
+mean   4135001.0   3147.426211    307.802752   3295.968737  6.978712e+06
+std          0.0   4036.457169    394.396439   3145.178309  4.162720e+05
+min    4135001.0      0.000000      0.000000      0.000000  6.183645e+06
+25%    4135001.0      0.000000      0.000000      0.000000  6.512003e+06
+50%    4135001.0    429.000000     41.493750   2658.714286  7.146685e+06
+75%    4135001.0   6366.964286    623.618750   6274.000000  7.268706e+06
+max    4135001.0  14471.125000   1410.950000   9163.000000  7.846821e+06
+
+==================================================
+
+--- Plant 1 Weather ---
+Shape (Rows, Columns): (3182, 6)
+
+Missing Values:
+DATE_TIME              0
+PLANT_ID               0
+SOURCE_KEY             0
+AMBIENT_TEMPERATURE    0
+MODULE_TEMPERATURE     0
+IRRADIATION            0
+
+Statistical Description:
+        PLANT_ID  AMBIENT_TEMPERATURE  MODULE_TEMPERATURE  IRRADIATION
+count     3182.0          3182.000000         3182.000000  3182.000000
+mean   4135001.0            25.531606           31.091015     0.228313
+std          0.0             3.354856           12.261222     0.300836
+min    4135001.0            20.398505           18.140415     0.000000
+25%    4135001.0            22.705182           21.090553     0.000000
+50%    4135001.0            24.613814           24.618060     0.024653
+75%    4135001.0            27.920532           41.307840     0.449588
+max    4135001.0            35.252486           65.545714     1.221652
+
+==================================================
+
+--- Plant 2 Generation ---
+Shape (Rows, Columns): (67698, 7)
+
+Missing Values:
+DATE_TIME      0
+PLANT_ID       0
+SOURCE_KEY     0
+DC_POWER       0
+AC_POWER       0
+DAILY_YIELD    0
+TOTAL_YIELD    0
+
+Statistical Description:
+        PLANT_ID      DC_POWER      AC_POWER   DAILY_YIELD   TOTAL_YIELD
+count    67698.0  67698.000000  67698.000000  67698.000000  6.769800e+04
+mean   4136001.0    246.701961    241.277825   3294.890295  6.589448e+08
+std          0.0    370.569597    362.112118   2919.448386  7.296678e+08
+min    4136001.0      0.000000      0.000000      0.000000  0.000000e+00
+25%    4136001.0      0.000000      0.000000    272.750000  1.996494e+07
+50%    4136001.0      0.000000      0.000000   2911.000000  2.826276e+08
+75%    4136001.0    446.591667    438.215000   5534.000000  1.348495e+09
+max    4136001.0   1420.933333   1385.420000   9873.000000  2.247916e+09
+
+==================================================
+
+--- Plant 2 Weather ---
+Shape (Rows, Columns): (3259, 6)
+
+Missing Values:
+DATE_TIME              0
+PLANT_ID               0
+SOURCE_KEY             0
+AMBIENT_TEMPERATURE    0
+MODULE_TEMPERATURE     0
+IRRADIATION            0
+
+Statistical Description:
+        PLANT_ID  AMBIENT_TEMPERATURE  MODULE_TEMPERATURE  IRRADIATION
+count     3259.0          3259.000000         3259.000000  3259.000000
+mean   4136001.0            28.069400           32.772408     0.232737
+std          0.0             4.061556           11.344034     0.312693
+min    4136001.0            20.942385           20.265123     0.000000
+25%    4136001.0            24.602135           23.716881     0.000000
+50%    4136001.0            26.981263           27.534606     0.019040
+75%    4136001.0            31.056757           40.480653     0.438717
+max    4136001.0            39.181638           66.635953     1.098766
+
+==================================================
+
