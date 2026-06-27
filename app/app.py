@@ -11,8 +11,9 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
 # File paths
-MODEL_PATH = r'C:\Users\pk\Documents\pk_intern\Solar Power Generation Prediction\model\single_linear_regression.joblib'
-SCALER_PATH = r'C:\Users\pk\Documents\pk_intern\Solar Power Generation Prediction\data\validation\scalers\Plant_1_scaler.joblib'
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MODEL_PATH = os.path.join(BASE_DIR, 'model', 'single_linear_regression.joblib')
+SCALER_PATH = os.path.join(BASE_DIR, 'data', 'validation', 'scalers', 'Plant_1_scaler.joblib')
 
 # Load the model
 try:
